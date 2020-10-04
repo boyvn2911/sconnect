@@ -1,0 +1,32 @@
+{
+    "name": "sonleu/sconnect",
+    "description": "SConnect API integration with Laravel by Son Leu",
+    "keywords": [
+        "sconnect",
+        "sconnect-util",
+        "sonleu"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Son Leu",
+            "email": "boyvn2911@gmail.com",
+            "role": "developer"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "SonLeu\\SConnect\\": "src/"
+        }
+    },
+    "require": {
+        "guzzlehttp/guzzle": "^7.0"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "SonLeu\\SConnect\\Providers\\SConnectServiceProvider"
+            ]
+        }
+    }
+}

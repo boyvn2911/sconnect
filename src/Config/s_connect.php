@@ -1,0 +1,32 @@
+<?php
+
+return [
+    /*
+    |--------------------------------------------------------------------------
+    | SConnect Root Url
+    |--------------------------------------------------------------------------
+    */
+    'root_url' => env('S_CONNECT_URL'),
+
+    /*
+    |--------------------------------------------------------------------------
+    | API Key to access internal APIs
+    |--------------------------------------------------------------------------
+    */
+    'api_key' => env('S_CONNECT_API_KEY'),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Custom models
+    |--------------------------------------------------------------------------
+    | Your models to which SConnect data should be returned.
+    |
+    | Your own models should extends the base models.
+    |
+    */
+    'models' => [
+        'user' => '\SonLeu\SConnect\Models\User',
+        'position' => '\SonLeu\SConnect\Models\Position',
+        'department' => '\SonLeu\SConnect\Models\Department',
+    ]
+];
