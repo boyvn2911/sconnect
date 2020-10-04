@@ -38,6 +38,8 @@ By default, packages' models will be returned in api responses.
 In case you want to customize the models, change the namespaces inside config.s_connect.models. For example:
 
 ```php
+// config/s_connect.php
+
 return [
     /*
     |--------------------------------------------------------------------------

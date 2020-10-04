@@ -15,7 +15,7 @@ class UserService
 
     public function __construct()
     {
-        $this->user_login = auth()->user();
+        $this->user_login = auth('sconnect')->user();
     }
 
     /**
@@ -110,7 +110,7 @@ class UserService
         }
 
         /** @var User $user */
-        $user = auth()->user();
+        $user = auth('sconnect')->user();
 
         $direct_staffs = $this->listDirectStaffsOfUser($user);
 
@@ -145,7 +145,7 @@ class UserService
         }
 
         /** @var User $user */
-        $user = auth()->user();
+        $user = auth('sconnect')->user();
 
         $staffs = $this->listStaffsOfUser($user);
 
@@ -180,7 +180,7 @@ class UserService
         }
 
         /** @var User $user */
-        $user = auth()->user();
+        $user = auth('sconnect')->user();
 
         $managers = $this->listManagersOfUser($user);
 
@@ -215,7 +215,7 @@ class UserService
         }
 
         /** @var User $user */
-        $user = auth()->user();
+        $user = auth('sconnect')->user();
 
         $direct_managers = $this->listDirectManagersOfUser($user);
 
