@@ -1,8 +1,7 @@
 <?php
 
-namespace SonLeu\SConnect\Api;
+namespace SonLeu\SConnect\Api\Staff;
 
-use SonLeu\SConnect\Api\Staff\BaseStaffApi;
 use SonLeu\SConnect\Models\ListDepartmentResponse;
 use SonLeu\SConnect\ApiException;
 use SonLeu\SConnect\ObjectSerializer;
