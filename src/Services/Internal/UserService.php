@@ -1,9 +1,9 @@
 <?php
 
-namespace SonLeu\SConnect\Services;
+namespace SonLeu\SConnect\Services\Internal;
 
 use SonLeu\SConnect\ApiException;
-use SonLeu\SConnect\Api\UserApi;
+use SonLeu\SConnect\Api\Internal\UserApi;
 use SonLeu\SConnect\Models\ListUserResponse;
 use SonLeu\SConnect\Models\User;
 use Illuminate\Support\Collection;

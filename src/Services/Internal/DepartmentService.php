@@ -1,21 +1,14 @@
 <?php
 
-namespace SonLeu\SConnect\Services;
+namespace SonLeu\SConnect\Services\Internal;
 
 use SonLeu\SConnect\ApiException;
-use SonLeu\SConnect\Api\DepartmentApi;
+use SonLeu\SConnect\Api\Internal\DepartmentApi;
 use SonLeu\SConnect\Models\Department;
 use Illuminate\Support\Collection;
 
 class DepartmentService
 {
-    protected $deptApi;
-
-    public function __construct()
-    {
-        $this->deptApi = new DepartmentApi();
-    }
-
     /**
      * @return Collection|Department[]
      * @throws ApiException
@@ -31,25 +24,6 @@ class DepartmentService
         $departments = collect($response->getData()->getDepartments());
 
         session()->put('listDept', $departments);
-
-        return $departments;
-    }
-
-    /**
-     * @return Collection|Department[]
-     * @throws ApiException
-     */
-    public function listDeptChildren()
-    {
-        if (session()->has('listDeptChildren')) {
-            return session()->get('listDeptChildren');
-        }
-
-        $response = (new DepartmentApi())->listDeptChildren();
-
-        $departments = collect($response->getData()->getDepartments());
-
-        session()->put('listDeptChildren', $departments);
 
         return $departments;
     }
@@ -111,14 +85,5 @@ class DepartmentService
         return $departments->filter(function (Department $department) use ($parent_id) {
             return $department->getParentId() == $parent_id;
         });
-    }
-
-    /**
-     * @return array
-     * @throws ApiException
-     */
-    public function getCurrentUserDepts()
-    {
-        return $this->listDeptChildren()->toArray();
     }
 }
