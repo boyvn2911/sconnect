@@ -2,6 +2,7 @@
 
 namespace SonLeu\SConnect\Api;
 
+use SonLeu\SConnect\Api\Internal\BaseInternalApi;
 use SonLeu\SConnect\ApiException;
 use SonLeu\SConnect\AbstractModel;
 use SonLeu\SConnect\ObjectSerializer;

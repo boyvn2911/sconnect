@@ -1,18 +1,19 @@
 <?php
 
-namespace SonLeu\SConnect\Api;
+namespace SonLeu\SConnect\Api\Staff;
 
+use SonLeu\SConnect\Api\BaseApi;
 use SonLeu\SConnect\ApiException;
 
-abstract class BaseInternalApi extends BaseApi
+abstract class BaseStaffApi extends BaseApi
 {
-    protected $api_key;
+    protected $token;
 
     public function __construct()
     {
         parent::__construct();
 
-        $this->api_key = config('s_connect.api_key');
+        $this->token = auth('sconnect')->token();
     }
 
     /**
@@ -26,10 +27,10 @@ abstract class BaseInternalApi extends BaseApi
      */
     protected function callApi($resourcePath, $method, $queryParams = [], $httpBody = [], $headers = [])
     {
-        $resourcePath = sprintf('%s/%s', 'internal', trim($resourcePath,'/'));
+        $resourcePath = sprintf('%s/%s', 'staff', trim($resourcePath,'/'));
 
         $headers = array_merge($headers, [
-            'x-api-key' => $this->api_key,
+            'Authorization' => 'Bearer ' . $this->token,
         ]);
 
         return parent::callApi($resourcePath, $method, $queryParams, $httpBody, $headers);

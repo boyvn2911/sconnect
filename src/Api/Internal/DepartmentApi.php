@@ -1,6 +1,6 @@
 <?php
 
-namespace SonLeu\SConnect\Api;
+namespace SonLeu\SConnect\Api\Internal;
 
 use SonLeu\SConnect\Models\GetDepartmentResponse;
 use SonLeu\SConnect\Models\ListDepartmentResponse;
@@ -23,20 +23,6 @@ class DepartmentApi extends BaseInternalApi
     {
         list($data, $statusCode, $headers) = $this->callApi('departments', 'GET', [
             'pagination' => 'false',
-        ]);
-
-        return ObjectSerializer::deserialize($data, ListDepartmentResponse::class);
-    }
-
-    /**
-     * @return array|object|null|ListDepartmentResponse
-     * @throws ApiException|Exception
-     */
-    public function listDeptChildren()
-    {
-        list($data, $statusCode, $headers) = $this->callApi('../staff/departments', 'GET', [
-            'recursive' => 'children',
-            'flatten' => 'true'
         ]);
 
         return ObjectSerializer::deserialize($data, ListDepartmentResponse::class);
