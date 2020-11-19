@@ -28,5 +28,14 @@ return [
         'user' => '\SonLeu\SConnect\Models\User',
         'position' => '\SonLeu\SConnect\Models\Position',
         'department' => '\SonLeu\SConnect\Models\Department',
-    ]
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Cache
+    |--------------------------------------------------------------------------
+    */
+    'cache' => [
+        'ttl' => env('S_CONNECT_CACHE_TTL', 300),
+    ],
 ];

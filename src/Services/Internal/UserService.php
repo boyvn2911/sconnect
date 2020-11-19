@@ -2,6 +2,7 @@
 
 namespace SonLeu\SConnect\Services\Internal;
 
+use Illuminate\Support\Facades\Cache;
 use SonLeu\SConnect\ApiException;
 use SonLeu\SConnect\Api\Internal\UserApi;
 use SonLeu\SConnect\Models\ListUserResponse;
@@ -24,15 +25,15 @@ class UserService
      */
     public function list()
     {
-        if (session()->has('listUsers')) {
-            return session()->get('listUsers');
+        if (Cache::has('listUsers')) {
+            return Cache::get('listUsers');
         }
 
         $response = (new UserApi())->list();
 
         $users = collect($response->getData()->getUsers());
 
-        session()->put('listUsers', $users);
+        Cache::put('listUsers', $users, config('s_connect.cache.ttl'));
 
         return $users;
     }

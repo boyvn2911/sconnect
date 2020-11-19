@@ -2,6 +2,7 @@
 
 namespace SonLeu\SConnect\Services\Internal;
 
+use Illuminate\Support\Facades\Cache;
 use SonLeu\SConnect\ApiException;
 use SonLeu\SConnect\Api\Internal\DepartmentApi;
 use SonLeu\SConnect\Models\Department;
@@ -15,15 +16,15 @@ class DepartmentService
      */
     public function list()
     {
-        if (session()->has('listDept')) {
-            return session()->get('listDept');
+        if (Cache::has('listDept')) {
+            return Cache::get('listDept');
         }
 
         $response = (new DepartmentApi())->list();
 
         $departments = collect($response->getData()->getDepartments());
 
-        session()->put('listDept', $departments);
+        Cache::put('listDept', $departments, config('s_connect.cache.ttl'));
 
         return $departments;
     }
@@ -34,15 +35,15 @@ class DepartmentService
      */
     public function listTree()
     {
-        if (session()->has('listDeptTree')) {
-            return session()->get('listDeptTree');
+        if (Cache::has('listDeptTree')) {
+            return Cache::get('listDeptTree');
         }
 
         $response = (new DepartmentApi())->listTree();
 
         $departments = collect($response->getData()->getDepartments());
 
-        session()->put('listDeptTree', $departments);
+        Cache::put('listDeptTree', $departments, config('s_connect.cache.ttl'));
 
         return $departments;
     }
